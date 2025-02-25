@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('savings_goals', function (Blueprint $table) {
             $table->id();
+            $table->float('target_amount', 10, 2);
+            $table->float('current_amount', 10, 2)->default(0);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('wish_list_items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('target_amount', 10, 2);
+            $table->float('current_amount', 10, 2)->default(0);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
