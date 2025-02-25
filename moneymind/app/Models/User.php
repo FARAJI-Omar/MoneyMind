@@ -21,7 +21,38 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'salary',
+        'credit_date',
     ];
+
+
+    // relationship with Expense model
+    public function expense(){
+        return $this->hasMany(Expense::class);
+    }
+
+    // relationship with recurringExpense model
+    public function recurringExpense(){
+        return $this->hasMany(RecurringExpense::class);
+    }
+
+    // relationship with savingsGoal model
+    public function savingGoal(){
+        return $this->hasMany(SavingsGoal::class);
+    }
+
+    // relationship with wishListItem model
+    public function wishListItem(){
+        return $this->hasMany(WishListItem::class);
+    }
+
+    // relationship with notification model
+    public function notification(){
+        return $this->hasMany(Notification::class);
+    }
+
+    
+
 
     /**
      * The attributes that should be hidden for serialization.
