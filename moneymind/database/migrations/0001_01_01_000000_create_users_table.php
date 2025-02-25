@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->decimal('salary', 10, 2)->nullable(); // monthly salary
             $table->date('credit_date')->nullable(); // date of credit
             $table->rememberToken();

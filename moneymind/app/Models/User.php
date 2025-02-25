@@ -51,7 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-    
+    // relationship of user(admin) with expenseCategory model
+    public function expenseCategory(){
+        return $this->hasMany(ExpenseCategory::class);
+    }
+
 
 
     /**
