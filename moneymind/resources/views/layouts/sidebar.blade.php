@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li style="padding: 20px; ">
-                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
+                <a href="{{ route('settings')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-gears" style="margin-right: 10px;"></i> Settigns
                 </a>
             </li>

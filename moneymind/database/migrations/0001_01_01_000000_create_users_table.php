@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->decimal('salary', 10, 2)->nullable(); // monthly salary
             $table->date('credit_date')->nullable(); // date of credit
+            $table->unsignedTinyInteger('credit_day')->nullable(); // day of the month for credit
             $table->rememberToken();
             $table->timestamps();
         });

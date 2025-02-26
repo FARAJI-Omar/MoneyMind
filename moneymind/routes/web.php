@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
     return view('homepage');
@@ -18,6 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
 
 require __DIR__ . '/auth.php';
