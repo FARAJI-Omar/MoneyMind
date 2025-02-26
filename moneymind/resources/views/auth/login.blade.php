@@ -44,4 +44,8 @@
             </x-primary-button>
         </div>
     </form>
+    
+    <div style="color: gray;">
+        <a href="{{'register'}}">Register</a>
+    </div>
 </x-guest-layout>

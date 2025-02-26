@@ -24,6 +24,7 @@ class User extends Authenticatable
         'salary',
         'credit_date',
     ];
+    
 
 
     // relationship with Expense model

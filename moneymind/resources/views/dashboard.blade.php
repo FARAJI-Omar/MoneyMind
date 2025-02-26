@@ -1,17 +1,44 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@include('layouts.app')
+@extends('layouts.sidebar')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+
+@section('content')
+<!-- content for the dashboard -->
+<div style="display: flex; gap: 20px">
+    <div style="width: 70%; height: 100vh; display: flex; flex-direction: column; gap: 20px">
+        <div style=" height: 80%; border: #e4e4e4ab solid; border-radius: 10px">
+
+        </div>
+        <div style=" height: 40%; border: #e4e4e4ab solid; border-radius: 10px">
+
         </div>
     </div>
-</x-app-layout>
+    <div style="width: 30%; height: 100vh; border: #e4e4e4ab solid; border-radius: 10px; display: flex; flex-direction: column; gap: 20px; align-items: center">
+        <h2 style="font-family: 'poppins'; ">Your info</h2>
+        <div style="height: 200px; width: 95%; background: linear-gradient(to right, #aca2fe 80%, black 20%); border-radius: 10px; display: flex; flex-direction: column; gap: 5px;padding:10px 0 0 15px">
+            <h2>{{$infos->name}}</h2>
+            <h3>{{$infos->email}}</h3>
+            <p style="position: relative; top: 40%; left: 82%; color: white">{{ \Carbon\Carbon::parse($infos->created_at)->format('dM') }}</p>
+            <h2 style="margin-top: 50px">MoneyMind</h2>
+        </div>
+
+        <div>
+        <h2>Recent Payments</h2>
+        <div style="display: flex; width: 100%; gap: 160px; padding: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 5px">
+                <div><h3>Pet food</h3></div>
+                <div><p>25/06 14:45</p></div>
+            </div>
+            <div><p>-150$</p></div>
+        </div>
+        <div style="display: flex; width: 100%; gap: 160px; padding: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 5px">
+                <div><h3>Transport</h3></div>
+                <div><p>25/06 14:59</p></div>
+            </div>
+            <div><p>-15$</p></div>
+        </div>
+        </div>
+    </div>
+</div>
+@endsection
