@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Models\RecurringExpense;
 use App\Models\ExpenseCategory;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ExpenseController extends Controller
     {
         $categories = ExpenseCategory::all();
         $expenses = Expense::where('user_id', auth()->id())->get();
-        return view('expenses', compact('categories', 'expenses'));
+        $recurringExpenses = RecurringExpense::where('user_id', auth()->id())->get();
+        return view('expenses', compact('categories', 'expenses', 'recurringExpenses'));
     }
 
     public function store(Request $request)

@@ -13,4 +13,9 @@ class ExpenseCategory extends Model
     {
         return $this->hasMany(Expense::class);
     }
+    
+    public function recurringExpenses()
+    {
+        return $this->hasMany(RecurringExpense::class);
+    }
 }

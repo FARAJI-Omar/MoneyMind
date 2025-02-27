@@ -4,7 +4,7 @@
         @auth
     <div class="shrink-0 flex items-center">
         <a href="{{ route('dashboard') }}">
-           <h2 class="flex gap-3" style="font-size: 20px;"><x-application-logo class="block h-9 w-auto fill-current text-gray-800" />MoneyMind</h2> 
+            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> 
         </a>
     </div>
 
