@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ExpenseController;
 
 Route::get('/', function () {
     return view('homepage');
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+
+    Route::get('/expenses', [ExpenseController::class, 'create'])->name('expenses');
+    Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
 });
 
 require __DIR__ . '/auth.php';

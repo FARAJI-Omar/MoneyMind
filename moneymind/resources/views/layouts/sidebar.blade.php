@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li style="padding: 20px; ">
-                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
+                <a href="{{ route('expenses')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-wallet" style="margin-right: 10px;"></i> Expenses
                 </a>
             </li>
