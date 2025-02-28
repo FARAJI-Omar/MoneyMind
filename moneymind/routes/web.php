@@ -8,15 +8,10 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RecurringExpenseController;
 
 Route::get('/', function () {
-    return view('dashboard');
-});
+    return view('homepage');
+})->name('homepage');
 
-Route::get('/dashboard', [ProfileController::class, 'homePage'])->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -29,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::post('/settings/update-expense/{id}', [SettingsController::class, 'updatee'])->name('settings.updatee');
 
     Route::get('/expenses', [ExpenseController::class, 'create'])->name('expenses');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');

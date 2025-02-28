@@ -18,7 +18,7 @@
     <form method="POST" action="{{ route('expenses.store') }}" style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
         @csrf
         <div style="align-self: flex-end;">
-            <button id="closebtn" style="color: white; position: absolute; top: 3%; right: 6%; background-color: #f63535; padding: 5px 5px; border-radius: 5px; font-weight: 600; font-size: 12px; border: 1px solid gray; box-shadow: 2px 2px black; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <button type="button" id="closebtn" style="color: white; position: absolute; top: 3%; right: 6%; background-color: #f63535; padding: 5px 5px; border-radius: 5px; font-weight: 600; font-size: 12px; border: 1px solid gray; box-shadow: 2px 2px black; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                 close</button>
         </div>
 
@@ -50,7 +50,7 @@
     <form method="POST" action="{{ route('recurring-expenses.store') }}" style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
         @csrf
         <div style="align-self: flex-end;">
-            <button id="closebtn2" style="color: white; position: absolute; top: 3%; right: 6%; background-color: #f63535; padding: 5px 5px; border-radius: 5px; font-weight: 600; font-size: 12px; border: 1px solid gray; box-shadow: 2px 2px black; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <button type="button" id="closebtn2" style="color: white; position: absolute; top: 3%; right: 6%; background-color: #f63535; padding: 5px 5px; border-radius: 5px; font-weight: 600; font-size: 12px; border: 1px solid gray; box-shadow: 2px 2px black; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                 close</button>
         </div>
 
@@ -144,14 +144,15 @@
     </table>
 
 </div>
-    <!-- Pagination Links -->
-    <div style="margin-top: 20px;">
-        {{ $expenses->links() }}
-    </div>
+<!-- Pagination Links -->
+<div style="margin-top: 20px;">
+    {{ $expenses->links() }}
+</div>
 
 
 
 
+@endsection
 <script>
     // JavaScript to hide the form by default and toggle visibility
     document.addEventListener("DOMContentLoaded", function() {
@@ -202,4 +203,3 @@
     });
 
 </script>
-@endsection

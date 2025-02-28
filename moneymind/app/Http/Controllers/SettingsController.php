@@ -1,15 +1,22 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\RecurringExpense;
+use App\Models\User;
+use App\Models\ExpenseCategory;
 
 class SettingsController extends Controller
 {
     // Show salary settings page
     public function index()
     {
-        return view('settings', ['user' => Auth::user()]);
+        $user = auth()->user();
+        $categories = ExpenseCategory::all();
+        $recurringExpenses = RecurringExpense::where('user_id', auth()->id())->get();
+        return view('settings', compact('recurringExpenses', 'user', 'categories'));
     }
 
     // Update salary and credit day
@@ -26,5 +33,23 @@ class SettingsController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Salary updated successfully!');
+    }
+
+    // Update recurring expense
+    public function updatee(Request $request, $id)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:0',
+            'category_id' => 'required|exists:expense_categories,id',
+            'due_date' => 'required|date',
+        ]);
+
+        $recurringExpense = RecurringExpense::findOrFail($id);
+        $recurringExpense->price = $request->amount;
+        $recurringExpense->category_id = $request->category_id;
+        $recurringExpense->due_date = $request->due_date;
+        $recurringExpense->save();
+
+        return redirect()->back()->with('success', 'Recurring expense updated successfully!');
     }
 }

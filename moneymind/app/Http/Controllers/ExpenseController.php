@@ -13,7 +13,7 @@ class ExpenseController extends Controller
     {
         $categories = ExpenseCategory::all();
         $expenses = Expense::where('user_id', auth()->id())->orderBy('created_at', 'desc')->paginate(6);
-        $recurringExpenses = RecurringExpense::where('user_id', auth()->id())->orderBy('created_at', 'desc')->  get();
+        $recurringExpenses = RecurringExpense::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
         return view('expenses', compact('categories', 'expenses', 'recurringExpenses'));
     }
 
