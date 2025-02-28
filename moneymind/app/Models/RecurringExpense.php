@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class RecurringExpense extends Model
 {
     protected $fillable = [
-        'user_id',
-        'category_id',
         'name',
         'price',
         'due_date',
+        'user_id',
+        'category_id',
     ];
 
     protected $casts = [

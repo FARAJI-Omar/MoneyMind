@@ -5,12 +5,18 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\RecurringExpenseController;
 
 Route::get('/', function () {
-    return view('homepage');
-})->name('homepage');
+    return view('dashboard');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ProfileController::class, 'homePage'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -26,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/expenses', [ExpenseController::class, 'create'])->name('expenses');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+
+    Route::post('/recurring-expenses', [RecurringExpenseController::class, 'store'])->name('recurring-expenses.store');
 });
 
 require __DIR__ . '/auth.php';

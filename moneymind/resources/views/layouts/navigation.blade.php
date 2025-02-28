@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<nav x-data="{ open: false }" style="background-color: white; border-bottom: gray solid 0.5px; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px">
-    <!-- Logo -->
+<nav x-data="{ open: false }" style="background-color: white; border-bottom: gray solid 0.5px; display: flex; align-items: center; justify-content: space-between; padding: 5px 20px 10px">
         @auth
     <div class="shrink-0 flex items-center">
         <a href="{{ route('dashboard') }}">
@@ -26,7 +25,7 @@
         </div>
         @else
         <div class="shrink-0 flex items-center">
-           <h2 class="flex gap-3" style="font-size: 20px;"><x-application-logo class="block h-9 w-auto fill-current text-gray-800" />MoneyMind</h2> 
+           <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
         </div>
         <div style="display: flex; gap: 20px">
             <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
