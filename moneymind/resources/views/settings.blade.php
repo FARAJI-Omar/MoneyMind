@@ -10,7 +10,7 @@
     @endif
 
     <div>
-        <button id="toggleFormBtn" class="btn btn-primary" style="background-color: lightgray; border: 2px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; font-weight: 600; font-family: 'Poppins', sans-serif; width: 100%; height: 50px; margin-bottom: 30px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"">
+        <button id="toggleFormBtn" class="btn btn-primary" style="background-color: lightgray; border: 2px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; font-weight: 600; font-family: 'Poppins', sans-serif; width: 100%; height: 50px; margin-bottom: 30px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
             <i class="fa-solid fa-pen-to-square"></i> Edit Salary</button>
     </div>
 
@@ -30,7 +30,7 @@
 
             <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20%; gap:20px">
                 <button type="button" id="cancel" Style="background-color: gray; border: 1px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">Cancel</button>
-                <button type="submit" Style="background-color: gray; border: 1px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                <button type="submit" Style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                     Save Changes
                 </button>
             </div>
@@ -45,7 +45,8 @@
     {{-- form2 --}}
     <div id="form2" style="display: flex; flex-direction: column; gap: 20px; align-items: center; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 5px 5px gray; width: 100%; height: 300px; margin: 0 auto 40px auto; overflow-x: hidden ;overflow-y: scroll;">
         @foreach($recurringExpenses as $recurringExpense)
-        <h2 class="text-xl font-bold mb-4" style="width: 100%; margin-left: 15%; font-weight: bold; font-size: 20px; margin-bottom: -10px">{{ $recurringExpense->name }}</h2>
+        <div>
+        <h2 style="width: 100%; font-weight: bold; font-size: 20px;">{{ $recurringExpense->name }}</h2>
         <form action="{{ route('settings.updatee', ['id' => $recurringExpense->id]) }}" method="POST">
             @csrf
 
@@ -69,24 +70,27 @@
 
                     <td class="p-2 font-medium">Due Date</td>
                     <td class="p-2">
-                        <input type="date" name="due_date" id="due_date"                                                         class="w-full p-2 border rounded" required min="1" max="31">
-                    </td>
-
-                    <td class="p-2 text-center">
-                        <button type="button" class="bg-red-600 text-white px-4 py-2 rounded shadow-md" style="transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                            Delete
-                        </button>
+                        <input type="date" name="due_date" id="due_date" class="w-full p-2 border rounded" required min="1" max="31">
                     </td>
                 </tr>
             </table>
 
-            <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20px; gap: 20px">
+            <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20px; gap: 20px; margin-bottom: 0px">
                 <button type="button" id="cancel2" Style="background-color: gray; border: 1px solid gray; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">Cancel</button>
-                <button type="submit" style="background-color: gray; border: 1px solid gray; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                <button type="submit" style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                     Save
                 </button>
             </div>
         </form>
+        {{-- Delete form --}}
+        <form action="{{ route('settings.destroy', ['id' => $recurringExpense->id]) }}" method="POST" style="position: relative; top: -17%; left: 20%">
+            @csrf
+            @method('DELETE')
+            <button type="submit"  style="background-color: red; color: white; font-weight: bold; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                Delete
+            </button>
+        </form>
+        </div>
         @endforeach
     </div>
 
@@ -102,12 +106,10 @@
         const form2 = document.getElementById('form2');
         const toggleButton = document.getElementById('toggleFormBtn');
         const toggleButton2 = document.getElementById('toggleFormBtn2');
-        {{-- const overlay = document.getElementById('overlay'); --}}
         const closebtn = document.getElementById('cancel');
         const closebtn2 = document.getElementById('cancel2');
 
         // Hide the form by default
-        {{-- overlay.style.display = 'none'; --}}
         form.style.display = 'none';
         form2.style.display = 'none';
 
@@ -115,27 +117,21 @@
         toggleButton.addEventListener('click', function() {
             if (form.style.display === 'none') {
                 form.style.display = 'flex';
-                overlay.style.display = 'block';
             } else {
                 form.style.display = 'none';
-                overlay.style.display = 'none';
             }
         });
 
         toggleButton2.addEventListener('click', function() {
             if (form2.style.display === 'none') {
                 form2.style.display = 'flex';
-                overlay.style.display = 'block';
             } else {
                 form2.style.display = 'none';
-                overlay.style.display = 'none';
             }
         });
 
-
         closebtn.addEventListener('click', function() {
             form.style.display = 'none';
-            overlay.style.display = 'none';
         });
 
         closebtn2.addEventListener('click', function() {

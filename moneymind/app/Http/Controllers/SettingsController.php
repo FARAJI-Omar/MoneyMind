@@ -52,4 +52,12 @@ class SettingsController extends Controller
 
         return redirect()->back()->with('success', 'Recurring expense updated successfully!');
     }
+
+    public function destroy($id)
+    {
+        $recurringExpense = RecurringExpense::findOrFail($id);
+        $recurringExpense->delete();
+
+        return redirect()->back()->with('success', 'Recurring expense deleted successfully.');
+    }
 }

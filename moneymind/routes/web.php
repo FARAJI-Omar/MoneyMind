@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::post('/settings/update-expense/{id}', [SettingsController::class, 'updatee'])->name('settings.updatee');
+    Route::delete('/settings/delete-expense/{id}', [SettingsController::class, 'destroy'])->name('settings.destroy');
 
     Route::get('/expenses', [ExpenseController::class, 'create'])->name('expenses');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
