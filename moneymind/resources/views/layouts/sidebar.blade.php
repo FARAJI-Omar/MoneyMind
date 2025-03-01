@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<div style="display: flex; height: 800px;">
+<div style="display: flex; height: auto;">
     <!-- Sidebar (20% width) -->
     <div style="width: 15%; color: #4e4e4e; padding-top: 20px;  border-right: 0.5px gray solid">
         <ul style="list-style: none; padding: 50px 5px; margin: 0;">
@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li style="padding: 20px; {{ request()->routeIs('profile.edit') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
-                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
+                <a href="{{ route('profile.edit')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-user" style="margin-right: 10px; color: #2c2b2b"></i> Profile
                 </a>
             </li>

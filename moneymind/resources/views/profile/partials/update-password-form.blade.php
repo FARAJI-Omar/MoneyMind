@@ -32,7 +32,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <button style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 5px 5px black; padding: 5px 20px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">{{ __('Save') }}</button>
 
             @if (session('status') === 'password-updated')
                 <p
