@@ -43,7 +43,7 @@
     </div>
 
     {{-- form2 --}}
-    <div id="form2" style="display: flex; flex-direction: column; gap: 20px; align-items: center; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 5px 5px gray; width: 100%; height: 300px; margin: 0 auto 40px auto; overflow-x: hidden ;overflow-y: scroll;">
+    <div id="form2" style="display: flex; flex-direction: column; gap: 20px; align-items: center; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 5px 5px gray; width: 100%; height: 500px; margin: 0 auto 40px auto; overflow-x: hidden ;overflow-y: scroll;">
         @foreach($recurringExpenses as $recurringExpense)
         <div>
         <h2 style="width: 100%; font-weight: bold; font-size: 20px;">{{ $recurringExpense->name }}</h2>
@@ -107,7 +107,7 @@
         const toggleButton = document.getElementById('toggleFormBtn');
         const toggleButton2 = document.getElementById('toggleFormBtn2');
         const closebtn = document.getElementById('cancel');
-        const closebtn2 = document.getElementById('cancel2');
+        const closebtn2 = document.querySelectorAll('#cancel2');
 
         // Hide the form by default
         form.style.display = 'none';
@@ -134,9 +134,10 @@
             form.style.display = 'none';
         });
 
-        closebtn2.addEventListener('click', function() {
-            form2.style.display = 'none';
-            overlay.style.display = 'none';
+        closebtn2.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                form2.style.display = 'none';
+            });
         });
     });
 

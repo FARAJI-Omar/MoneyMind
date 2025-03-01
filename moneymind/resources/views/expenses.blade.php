@@ -41,7 +41,7 @@
             </select>
         </div>
 
-        <button type="submit" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 10%; background-color: gray; border: 1px solid gray; box-shadow: 5px 5px black; padding: 5px 10px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <button type="submit" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 10%; background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 5px 5px black; padding: 5px 10px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
             Add Expense</button>
     </form>
 </div>
@@ -81,33 +81,18 @@
             </select>
         </div>
 
-        <button type="submit" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 10%; background-color: gray; border: 1px solid gray; box-shadow: 5px 5px black; padding: 5px 10px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <button type="submit" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 10%; background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 5px 5px black; padding: 5px 10px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
             Add Expense</button>
     </form>
 </div>
 
-<div style="margin-top: 5%; height: 26%; border: #e4e4e4ab solid; border-radius: 10px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 0 10px 0 10px">
-    <style>
-        ::-webkit-scrollbar {
-            height: 7px;
-            width: 12px
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: lightgray;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background-color: white;
-        }
-
-    </style>
+<div style="margin-top: 5%; height: 32%; border: #e4e4e4ab solid; border-radius: 10px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 0 10px 0 10px">
+    <style>::-webkit-scrollbar {height: 7px;width: 12px}::-webkit-scrollbar-thumb {background-color: lightgray;border-radius: 5px;}::-webkit-scrollbar-track {background-color: white;}</style>
 
     <h2 style="margin: 0 0 15px 10px; font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 22px">Reccuring expenses</h2>
-    <div style="display: inline-flex; gap: 20px">
+    <div style="display: inline-flex; gap: 20px;">
         @foreach($recurringExpenses as $recurringExpense)
-        <div style="background-color: white; width: 280px; height: 130px; border-radius: 10px; padding: 5px 0 0 15px; display: flex; flex-direction: column; align-items: start; gap: 8px">
+        <div style="background-color: white; width: 280px; height: 150px; border-radius: 10px; padding: 5px 0 0 15px; display: flex; flex-direction: column; align-items: start; gap: 8px">
             <h3 style="font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 16px">{{$recurringExpense->name}}</h3>
             <h4 style="font-family: 'Poppins', sans sarif; font-size: 15px">{{$recurringExpense->price}} dh</h4>
             <h5 style="font-family: 'Poppins', sans sarif; font-size: 13px; background-color: #eceaea; padding: 0px 10px; border-radius: 5px">Entertainement</h5>
