@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use App\Models\Expense;
+use App\Models\RecurringExpense;
 
 class DashboardController extends Controller
 {

@@ -18,6 +18,11 @@
                     <i class="fa-solid fa-wallet" style="margin-right: 10px; color: #2c2b2b"></i> Expenses
                 </a>
             </li>
+            <li style="padding: 20px; {{ request()->routeIs('wishlist') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+                <a href="{{ route('wishlist')}}" style="text-decoration: none; display: flex; align-items: center;">
+                    <i class="fa-solid fa-clipboard-list" style="margin-right: 10px; color: #2c2b2b"></i> Wish List
+                </a>
+            </li>
             <li style="padding: 20px; {{ request()->routeIs('settings') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('settings')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-gears" style="margin-right: 10px; color: #2c2b2b"></i> Settings
@@ -40,7 +45,7 @@
     </div>
 
     <!-- Main Content (80% width) -->
-    <div style="width: 80%; padding: 20px;">
+    <div style="width: 80%; padding: 20px 20px 70px;">
         @yield('content')
     </div>
 </div>

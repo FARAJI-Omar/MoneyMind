@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RecurringExpenseController;
+use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
@@ -24,13 +25,21 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+   
     Route::post('/settings/update-expense/{id}', [SettingsController::class, 'updatee'])->name('settings.updatee');
     Route::delete('/settings/delete-expense/{id}', [SettingsController::class, 'destroy'])->name('settings.destroy');
+    
+    Route::post('/settings/update-wishlist/{id}', [SettingsController::class, 'updateee'])->name('settings.updateee');
+    Route::delete('/settings/delete-wishlistitem/{id}', [SettingsController::class, 'destroyy'])->name('settings.destroyy');
 
     Route::get('/expenses', [ExpenseController::class, 'create'])->name('expenses');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
 
     Route::post('/recurring-expenses', [RecurringExpenseController::class, 'store'])->name('recurring-expenses.store');
+
+    Route::get('/wishlist', [WishListController::class, 'create'])->name('wishlist');
+    Route::post('/wishlist', [WishListController::class, 'store'])->name('wishlist.store');
+
 });
 
 require __DIR__ . '/auth.php';
