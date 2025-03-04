@@ -13,11 +13,11 @@
                     <i class="fa-solid fa-chart-bar" style="margin-right: 10px; color: #2c2b2b"></i> Statistics
                 </a>
             </li>
-            {{-- <li style="padding: 20px; {{ request()->routeIs('admin.manageUsers') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('admin.manageUsers') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('admin.manageUsers')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-wallet" style="margin-right: 10px; color: #2c2b2b"></i> Manage Users
                 </a>
-            </li> --}}
+            </li>
             <li style="padding: 20px; {{ request()->routeIs('admin.manageCategories') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('admin.manageCategories')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-clipboard-list" style="margin-right: 10px; color: #2c2b2b"></i> Manage Categories
