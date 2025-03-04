@@ -40,8 +40,8 @@
         </thead>
         <tbody>
             @foreach($categories as $category)
-            <tr style="border-bottom: 1px solid #dee2e6; background-color: white;">
-                <td style="padding: 10px; color: #1e1d1d; font-size: 15px; font-family: 'Poppins'">{{ $category->name }}</td>
+            <tr style="border-bottom: 2px solid #dee2e6; background-color: white;">
+                <td style="padding: 10px; color: #1e1d1d; font-size: 14px; font-family: 'Poppins'; font-weight: bold">{{ $category->name }}</td>
                 <td style="padding: 10px; font-weight: bold; color: #000;">
                     <form action="{{ route('categories.destroy', ['id' => $category->id]) }}" method="POST" style="position: relative; top: -21%; left: 25%">
                         @csrf
