@@ -21,24 +21,23 @@
             <h2 style="margin-top: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px">MoneyMind</h2>
         </div>
 
-        <div>
-        <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 20px">Recent Payments</h2>
-        <div style="display: flex; width: 100%; gap: 160px; padding: 10px;">
-            <div style="display: flex; flex-direction: column; gap: 5px">
-                <div><h3>Pet food</h3></div>
-                <div><p>25/06 14:45</p></div>
+        <div style="width: 100%; padding: 10px 10px 0 10px ">
+            <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 20px">Recent Expenses</h2>
+            @foreach($expenses->take(5) as $expense)
+            <div style="display: flex; gap: 20px; padding: 10px; justify-content: space-between">
+                <div style="display: flex; flex-direction: column; gap: 5px; align-items: start; justify-content: center">
+                    <div><h3>{{$expense->name}}</h3></div>
+                    <div><p style="font-size: 12px">{{ \Carbon\Carbon::parse($expense->created_at)->format('dM  h:m') }}</p></div>
+                </div>
+                
+                <div><p>-{{$expense->price}} dh</p></div>
             </div>
-            <div><p>-150 dh</p></div>
-        </div>
-        <hr>
-        <div style="display: flex; width: 100%; gap: 160px; padding: 10px;">
-            <div style="display: flex; flex-direction: column; gap: 5px">
-                <div><h3>Transport</h3></div>
-                <div><p>25/06 14:59</p></div>
+            <hr>
+            @endforeach
+            <p style="margin: 0 0 0 10px">...</p>
+            <div style="margin: 0 0 10px 120px">
+                <a href="{{ route('expenses')}}" style="font-weight: bold; background-color: #aca2fe; padding: 2px 10px; border-radius: 5px;">See All</a>
             </div>
-            <div><p>-15 dh</div>
-        </div>
-        <hr>
         </div>
     </div>
 </div>
