@@ -16,6 +16,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+        if (auth()->check()) {
+            $user = auth()->user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+            return redirect()->route('dashboard');
+        }
         return view('auth.login');
     }
 
@@ -28,7 +35,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return $this->authenticated($request, auth()->user());
+    }
+
+    /**
+     * Handle post-login redirection based on user role.
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('dashboard');
     }
 
     /**
