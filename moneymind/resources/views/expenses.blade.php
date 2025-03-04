@@ -67,7 +67,7 @@
         <div style="display: flex; align-items: center; gap: 10px;">
             <label for="due_date" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: #3a3a3a; width: 100px;">Due Date</label>
             <div>
-                <input type="number" name="due_date" id="price" required style="flex: 1; border-radius: 5px; width: 200px" min="1" max="31">
+                <input type="date" name="due_date" id="price" required style="flex: 1; border-radius: 5px; width: 200px" min="1" max="31">
                 <p style="color: gray">of each month</p>
             </div>
         </div>
@@ -96,7 +96,7 @@
             <h3 style="font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 16px">{{$recurringExpense->name}}</h3>
             <h4 style="font-family: 'Poppins', sans sarif; font-size: 15px">{{$recurringExpense->price}} dh</h4>
             <h5 style="font-family: 'Poppins', sans sarif; font-size: 13px; background-color: #eceaea; padding: 0px 10px; border-radius: 5px">Entertainement</h5>
-            <p style="font-family: 'Poppins', sans sarif; font-size: 13px">due at: {{ \Carbon\Carbon::parse($recurringExpense->due_date)->format('d M') }}</p>
+            <p style="font-family: 'Poppins', sans sarif; font-size: 13px">due at: {{ \Carbon\Carbon::parse($recurringExpense->due_date)->format('d') }} {{ \Carbon\Carbon::now()->format('F') }}</p>
         </div>
         @endforeach
     </div>
