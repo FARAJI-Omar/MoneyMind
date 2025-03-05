@@ -8,6 +8,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RecurringExpenseController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SavingGoalController;
 
 use function Pest\Laravel\delete;
 
@@ -69,6 +70,10 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/wishlist', [WishListController::class, 'create'])->name('wishlist');
         Route::post('/wishlist', [WishListController::class, 'store'])->name('wishlist.store');
+
+        Route::get('/savingGoal', [SavingGoalController::class, 'create'])->name('savingGoal');
+        Route::post('/savingGoal', [SavingGoalController::class, 'store'])->name('savingGoal.store');
+        Route::post('/savingGoal/update/{id}', [SavingGoalController::class, 'update'])->name('savingGoal.update');
     });
 });
 

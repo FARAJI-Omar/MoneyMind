@@ -8,9 +8,9 @@
                     <i class="fa-solid fa-tachometer-alt" style="margin-right: 10px; color: #2c2b2b"></i> Dashboard
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('statistics') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
-                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
-                    <i class="fa-solid fa-chart-bar" style="margin-right: 10px; color: #2c2b2b"></i> Statistics
+            <li style="padding: 20px; {{ request()->routeIs('savingGoal') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+                <a href="savingGoal" style="text-decoration: none; display: flex; align-items: center;">
+                    <i class="fa-solid fa-piggy-bank" style="margin-right: 10px; color: #2c2b2b"></i> Saving Goal
                 </a>
             </li>
             <li style="padding: 20px; {{ request()->routeIs('expenses') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
