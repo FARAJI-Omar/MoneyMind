@@ -4,9 +4,11 @@
 @section('content')
 
 @if(session('success'))
-<div style="width: 400px; height: 50px; background-color: white; color: green; border: green 2px solid; border-radius: 5px; display: flex;">
-    <div style="background-color: green; width: 20%; display: flex; justify-content: center; align-items: center"><i class="fa-solid fa-circle-check" style="color: white; font-weight: bold; font-size: 30px"></i></div>
-    <div>
+<div id="alert" style="width: 400px; height: 45px; background-color: white; color: green; border: green 2px solid; border-radius: 5px; display: flex; font-family: 'Poppins'; font-weight: bold;">
+    <div style="background-color: green; width: 15%; display: flex; justify-content: center; align-items: center">
+        <i class="fa-solid fa-circle-check" style="color: white; font-weight: bold; font-size: 30px"></i>
+    </div>
+    <div style="align-self: center; padding-left: 10px; font-size: 14px">
         {{ session('success') }}
     </div>
 </div>
@@ -58,6 +60,14 @@
 <script>
     function confirmDelete() {
         return confirm('Are you sure you want to delete this user?');
-    }
+    };
+
+
+    setTimeout(function() {
+       const alert = document.getElementById('alert');
+       if (alert){
+               alert.style.display = 'none';
+           }
+       }, 3000); // 3000ms = 3 sec
 
 </script>

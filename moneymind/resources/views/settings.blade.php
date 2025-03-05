@@ -3,11 +3,16 @@
 
 @section('content')
 <div>
-    @if(session('success'))
-    <div class="p-2 mb-4 bg-green-200 text-green-800 rounded">
+   @if(session('success'))
+<div id="alert" style="width: 400px; height: 45px; background-color: white; color: green; border: green 2px solid; border-radius: 5px; display: flex; font-family: 'Poppins'; font-weight: bold;">
+    <div style="background-color: green; width: 15%; display: flex; justify-content: center; align-items: center">
+        <i class="fa-solid fa-circle-check" style="color: white; font-weight: bold; font-size: 30px"></i>
+    </div>
+    <div style="align-self: center; padding-left: 10px; font-size: 14px">
         {{ session('success') }}
     </div>
-    @endif
+</div>
+@endif
 
     <div>
         <button id="toggleFormBtn" class="btn btn-primary" style="background-color: lightgray; border: 2px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; font-weight: 600; font-family: 'Poppins', sans-serif; width: 100%; height: 50px; margin-bottom: 30px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -203,5 +208,13 @@
             });
         });
     });
+
+
+     setTimeout(function() {
+        const alert = document.getElementById('alert');
+        if (alert){
+                alert.style.display = 'none';
+            }
+        }, 3000); // 3000ms = 3 sec
 
 </script>

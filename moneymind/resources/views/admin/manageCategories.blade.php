@@ -3,6 +3,17 @@
 
 @section('content')
 
+@if(session('success'))
+<div id="alert" style="width: 400px; height: 45px; background-color: white; color: green; border: green 2px solid; border-radius: 5px; display: flex; font-family: 'Poppins'; font-weight: bold;">
+    <div style="background-color: green; width: 15%; display: flex; justify-content: center; align-items: center">
+        <i class="fa-solid fa-circle-check" style="color: white; font-weight: bold; font-size: 30px"></i>
+    </div>
+    <div style="align-self: center; padding-left: 10px; font-size: 14px">
+        {{ session('success') }}
+    </div>
+</div>
+@endif
+
 <div style="display: flex; position: absolute; left: 80%;">
     <button id="toggleFormBtn" class="btn btn-primary" style="background-color: lightgray; border: 2px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; font-weight: 600; font-family: 'Poppins', sans-serif; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
         <i class="fas fa-plus"></i> 
@@ -43,7 +54,7 @@
             <tr style="border-bottom: 2px solid #dee2e6; background-color: white;">
                 <td style="padding: 10px; color: #1e1d1d; font-size: 14px; font-family: 'Poppins'; font-weight: bold">{{ $category->name }}</td>
                 <td style="padding: 10px; font-weight: bold; color: #000;">
-                    <form action="{{ route('categories.destroy', ['id' => $category->id]) }}" method="POST" style="position: relative; top: -21%; left: 25%">
+                    <form action="{{ route('categories.destroy', ['id' => $category->id]) }}" method="POST" style="position: relative; top: -21%; left: 25%" onsubmit="return confirmDelete()">
                         @csrf
                         @method('DELETE')
                         <button type="submit" style="background-color: red; color: white; font-size: 16px; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -92,5 +103,18 @@
             overlay.style.display = 'none';
         });
     });
+
+
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this category?');
+    };
+
+
+    setTimeout(function() {
+        const alert = document.getElementById('alert');
+        if (alert){
+                alert.style.display = 'none';
+            }
+        }, 3000); // 3000ms = 3 sec
 
 </script>
