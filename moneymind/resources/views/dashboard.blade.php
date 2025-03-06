@@ -3,7 +3,15 @@
 
 @section('content')
 <!-- content for the dashboard -->
-<div style="display: flex; gap: 20px; overflow: hidden">
+<div class="bg-blue-100  rounded-lg">
+    <img src="{{ asset("images/ai agent.png")}}" alt="ai agent image" style="width: 70px; height: 80px; position: relative; top: 10px; left: 90%">
+    <div style="background-color: #1dbd1d75; border: #e4e4e4ab solid; padding: 10px; border-radius: 20px; font-family: 'Poppins'; font-size: 14px; font-weight: 600; color: #3a3a3a;">
+        <p class="text-black-700">{{ $financialAdvice }}</p>
+    </div>
+</div>
+
+
+<div style="display: flex; gap: 20px; overflow: hidden; margin-top: 20px">
     <div style="width: 70%; height: auto; display: flex; flex-direction: column; gap: 20px">
         <div style="height: auto; border: #e4e4e4ab solid; border-radius: 10px; padding: 20px;">
             <h2>Total expenses by Category</h2>
@@ -55,7 +63,7 @@
 
         <div style="width: 100%; padding: 10px 10px 0 10px ">
             <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 20px">Recent Expenses</h2>
-            @foreach($expenses->take(9) as $expense)
+            @foreach($expenses->take(6) as $expense)
             <div style="display: flex; gap: 20px; padding: 10px; justify-content: space-between">
                 <div style="display: flex; flex-direction: column; gap: 5px; align-items: start; justify-content: center">
                     <div>
@@ -107,7 +115,7 @@
                     datasets: [{
                         label: 'Financial Overview',
                         data: [restOfSalary, totalExpenses, totalRecurringExpenses, savingGoal],
-                        backgroundColor: ['green', 'blue', 'red', 'purple'],
+                        backgroundColor: ['green', 'yellow', 'red', 'purple'],
                         borderWidth: 1,
                     }]
                 },

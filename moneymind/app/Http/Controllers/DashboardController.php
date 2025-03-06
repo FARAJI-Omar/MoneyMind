@@ -8,10 +8,12 @@ use App\Models\Expense;
 use App\Models\RecurringExpense;
 use App\Models\SavingGoal;
 use App\Models\ExpenseCategory;
+use App\Services\AIService;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(AIService $aiService)
     {
         if (auth()->check()) {
             $infos = auth()->user();
@@ -39,7 +41,9 @@ class DashboardController extends Controller
             // Fetch category names
             $categoryNames = ExpenseCategory::pluck('name', 'id');
 
-            return view('dashboard', compact(
+            $financialAdvice = $aiService->getFinancialAdvice($salary, $totalAllExpenses);
+
+            return view('dashboard', compact('financialAdvice',
                 'infos', 'expenses', 'salary', 'savingGoal', 'totalExpenses', 'totalRecurringExpenses',
                 'totalAllExpenses', 'restOfSalary', 'expensesByCategory', 'recurringExpensesByCategory', 'categoryNames'
             ));
