@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('savings_goals', function (Blueprint $table) {
+        Schema::create('saving_goals', function (Blueprint $table) {
             $table->id();
             $table->float('target_amount', 10, 2);
             $table->float('current_amount', 10, 2)->default(0);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('savings_goals');
+        Schema::dropIfExists('saving_goals');
     }
 };

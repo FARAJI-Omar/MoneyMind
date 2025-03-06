@@ -10,6 +10,7 @@ class SavingGoal extends Model
     protected $fillable = [
         'target_amount',
         'current_amount',
+        'monthly_deduction',
         'user_id',
     ];
 

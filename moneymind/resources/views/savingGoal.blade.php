@@ -35,6 +35,10 @@
                 <label for="target_amount" class="block font-medium">Target Amount (dh)</label>
                 <input type="number" name="target_amount" id="target_amount" class="w-full p-2 border rounded" required>
             </div>
+            <div class="mb-4">
+                <label for="target_amount" class="block font-medium">Monthly Deduction (dh)</label>
+                <input type="number" name="monthly_deduction" id="monthly_deduction" class="w-full p-2 border rounded" required>
+            </div>
 
             <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20%; gap:20px">
                 <button type="button" id="cancel" Style="background-color: gray; border: 1px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">Cancel</button>
@@ -52,6 +56,10 @@
             <div class="mb-4">
                 <label for="credit_day" class="block font-medium">Target Amount (dh)</label>
                 <input type="number" name="target_amount" id="target_amount" value="{{ old('target_amount', $savingGoal->target_amount) }}" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="credit_day" class="block font-medium">Monthly Deduction (dh)</label>
+                <input type="number" name="monthly_deduction" id="monthly_deduction" value="{{ old('monthly_deduction', $savingGoal->monthly_deduction) }}" class="w-full p-2 border rounded" required>
             </div>
 
             <div style="display: flex; justify-content: center; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20%;">
