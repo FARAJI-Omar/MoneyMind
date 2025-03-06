@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->decimal('salary', 10, 2)->nullable(); // monthly salary
-            $table->date('credit_date')->nullable(); // date of credit
             $table->unsignedTinyInteger('credit_day')->nullable(); // day of the month for credit
+            $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -49,5 +49,7 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('credit_day');
+
     }
 };
