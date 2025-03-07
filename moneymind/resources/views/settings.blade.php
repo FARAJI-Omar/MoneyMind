@@ -75,7 +75,7 @@
 
                     <td class="p-2 font-medium">Due Date</td>
                     <td class="p-2">
-                        <input type="date" name="due_date" id="due_date" class="w-full p-2 border rounded" required min="1" max="31">
+                        <input type="number" name="due_date" id="due_date" value="{{ old('due_date', $recurringExpense->due_date)}}" class="w-full p-2 border rounded" required min="1" max="31">
                     </td>
                 </tr>
             </table>
@@ -88,7 +88,7 @@
             </div>
         </form>
         {{-- Delete form --}}
-        <form action="{{ route('settings.destroy', ['id' => $recurringExpense->id]) }}" method="POST" style="position: relative; top: -17%; left: 20%">
+        <form action="{{ route('settings.destroy', ['id' => $recurringExpense->id]) }}" method="POST" style="position: relative; top: -17%; left: 21%">
             @csrf
             @method('DELETE')
             <button type="submit"  style="background-color: red; color: white; font-weight: bold; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">

@@ -13,7 +13,7 @@ class RecurringExpenseController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'due_date' => 'required|integer|between:1,31',
+            'due_date' => 'required|numeric|between:1,31',
             'category_id' => 'required|exists:expense_categories,id',
         ]);
 

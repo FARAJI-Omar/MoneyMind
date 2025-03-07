@@ -78,7 +78,7 @@
         <div style="display: flex; align-items: center; gap: 10px;">
             <label for="due_date" style="font-weight: 600; font-family: 'Poppins', sans-serif; color: #3a3a3a; width: 100px;">Due Date</label>
             <div>
-                <input type="date" name="due_date" id="price" required style="flex: 1; border-radius: 5px; width: 200px" min="1" max="31">
+                <input type="number" name="due_date" id="price" required style="flex: 1; border-radius: 5px; width: 200px" min="1" max="31">
                 <p style="color: gray">of each month</p>
             </div>
         </div>
@@ -97,23 +97,23 @@
     </form>
 </div>
 
-<div style="margin-top: 5%; height: 32%; border: #e4e4e4ab solid; border-radius: 10px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 0 10px 0 10px">
+<div style="margin-top: 5%; height: auto; border: #e4e4e4ab solid; border-radius: 10px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 0 10px 0 10px">
     <style>::-webkit-scrollbar {height: 7px;width: 12px}::-webkit-scrollbar-thumb {background-color: lightgray;border-radius: 5px;}::-webkit-scrollbar-track {background-color: white;}</style>
 
     <h2 style="margin: 0 0 15px 10px; font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 22px">Reccuring expenses</h2>
-    <div style="display: inline-flex; gap: 20px;">
+    <div style="display: inline-flex; gap: 20px; padding-bottom: 15px">
         @foreach($recurringExpenses as $recurringExpense)
-        <div style="background-color: white; width: 280px; height: 150px; border-radius: 10px; padding: 5px 0 0 15px; display: flex; flex-direction: column; align-items: start; gap: 8px">
+        <div style="background-color: white; width: 250px; height: 150px; border-radius: 10px; padding: 5px 0 0 15px; display: flex; flex-direction: column; align-items: start; gap: 8px">
             <h3 style="font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 16px">{{$recurringExpense->name}}</h3>
             <h4 style="font-family: 'Poppins', sans sarif; font-size: 15px">{{$recurringExpense->price}} dh</h4>
             <h5 style="font-family: 'Poppins', sans sarif; font-size: 13px; background-color: #eceaea; padding: 0px 10px; border-radius: 5px">Entertainement</h5>
-            <p style="font-family: 'Poppins', sans sarif; font-size: 13px">due at: {{ \Carbon\Carbon::parse($recurringExpense->due_date)->format('d') }} {{ \Carbon\Carbon::now()->format('F') }}</p>
+            <p style="font-family: 'Poppins', sans sarif; font-size: 13px">due at: {{ $recurringExpense->due_date}} {{ \Carbon\Carbon::now()->format('F') }}</p>
         </div>
         @endforeach
     </div>
 </div>
 
-<div style="margin-top: 2%; height: 50%; border: #e4e4e4ab solid; border-radius: 10px; padding: 0 10px 0 10px">
+<div style="margin-top: 2%; height: auto; border: #e4e4e4ab solid; border-radius: 10px; padding: 0 10px 0 10px">
     <h2 style="margin: 0 0 15px 10px; font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 22px">Daily expenses</h2>
 
     <table style="width: 100%; font-family: Arial, sans-serif; font-size: 14px; color: #5a5a5a">
