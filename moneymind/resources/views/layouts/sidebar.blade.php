@@ -45,7 +45,7 @@
     </div>
 
     <!-- Main Content (80% width) -->
-    <div style="width: 80%; padding: 20px 20px 70px;">
+    <div style="width: 80%; height: auto; padding: 20px 20px 70px;">
         @yield('content')
     </div>
 </div>
