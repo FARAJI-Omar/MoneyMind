@@ -20,7 +20,7 @@ class AIService
     {
         // Customize the prompt with the salary and expenses
         $prompt = "A user earns $salary DH per month and has total expenses of $totalAllExpenses DH.
-                   Give them personalized financial advice based on their expenses to better manage their budget in 1-2 small sentences, easy english.";
+                   Give them personalized financial advice based on their expenses to better manage their budget in 1-2 small sentences, easy english, if user have no current expenses, just say 'Welcome to MoneyMind! I'm here to help you manage your budget.'";
 
         Log::info('Gemini API Prompt:', ['prompt' => $prompt]);
 
