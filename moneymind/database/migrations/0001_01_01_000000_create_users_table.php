@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->decimal('salary', 10, 2)->nullable(); // monthly salary
-            $table->unsignedTinyInteger('credit_day')->nullable(); // day of the month for credit
+            $table->unsignedInteger('credit_day')->nullable(); // day of the month for credit
             $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
