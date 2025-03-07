@@ -11,3 +11,4 @@ Artisan::command('inspire', function () {
 
 
 app(Schedule::class)->command('salary:credit')->daily();
+app(Schedule::class)->command('RecurringExpense:deduct')->daily();
