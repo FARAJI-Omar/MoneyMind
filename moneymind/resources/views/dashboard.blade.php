@@ -28,21 +28,21 @@
                 <div style="display: flex; flex-direction: column; gap: 30px">
                     <div>
                         <h3>🔹Salary:</h3>
-                        <p>{{$salary}} dh (100%)</p>
+                        <p>{{$infos->salary}} dh</p>
                     </div>
                     <div>
-                        <h3>🔸Total Expenses:</h3>
-                        <p>{{$totalExpenses}} dh ({{ number_format(($totalExpenses / $salary) * 100, 2) }}%)</p>
+                        <h3>🔸Expenses:</h3>
+                        <p>{{$totalExpenses}} dh ({{ number_format(($totalExpenses / $balance) * 100, 2) }}%)</p>
                     </div>
                     <div>
-                        <h3>🔸Total Recurring Expenses:</h3>
-                        <p>{{$totalRecurringExpenses}} dh ({{ number_format(($totalRecurringExpenses / $salary) * 100, 2) }}%)</p>
+                        <h3>🔸Monthly Expenses:</h3>
+                        <p>{{$totalRecurringExpenses}} dh ({{ number_format(($totalRecurringExpenses / $balance) * 100, 2) }}%)</p>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 30px">
                     <div>
-                        <h3>🔹Rest of Salary:</h3>
-                        <p>{{$restOfSalary}} dh ({{ number_format(($restOfSalary / $salary) * 100, 2) }}%)</p>
+                        <h3>🔹Current Balance:</h3>
+                        <p>{{$restOfBalance}} dh ({{ number_format(($restOfBalance / $balance) * 100, 2) }}%)</p>
                     </div>
                     <div>
                         <h3>🔸Saving Goal:</h3>
@@ -56,7 +56,7 @@
         <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px; align-self: flex-start; padding: 10px 0 0 15px ">Your info</h2>
         <div style="height: 200px; width: 95%; background: linear-gradient(to right, #aca2fe 80%, black 20%); border-radius: 10px; display: flex; flex-direction: column; gap: 5px; padding:10px 0 0 15px; border: 2px solid black; box-shadow: 5px 5px gray;">
             <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px">{{ $infos->name }}</h2>
-            <h3 style="font-family: 'Poppins', sans-serif; font-size: 12px">{{ $infos->email }}</h3>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 13px;">Balance: {{ $infos->balance}} dh</h3>
             <p style="position: relative; top: 40%; left: 82%; color: white; font-size: 15px">{{ \Carbon\Carbon::parse($infos->created_at)->format('dM') }}</p>
             <h2 style="margin-top: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px">MoneyMind</h2>
         </div>
@@ -94,12 +94,12 @@
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Laravel Data
-            const salary = {!! json_encode($salary) !!};
+            const balance = {!! json_encode($balance) !!};
             const savingGoal = {!! json_encode($savingGoal) !!};
             const totalExpenses = {!! json_encode($totalExpenses) !!};
             const totalRecurringExpenses = {!! json_encode($totalRecurringExpenses) !!};
             const totalAllExpenses = {!! json_encode($totalAllExpenses) !!};
-            const restOfSalary = {!! json_encode($restOfSalary) !!};
+            const restOfBalance = {!! json_encode($restOfBalance) !!};
 
             // Category Data
             const categoryLabels = {!! json_encode($categoryNames->values()) !!}; // Category Names
@@ -111,10 +111,10 @@
             new Chart(ctx1, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Rest of Salary', 'Total Expenses', 'Total Recurring Expenses', 'Saving Goal'],
+                    labels: ['Current Balance', 'Total Expenses', 'Total Recurring Expenses', 'Saving Goal'],
                     datasets: [{
                         label: 'Financial Overview',
-                        data: [restOfSalary, totalExpenses, totalRecurringExpenses, savingGoal],
+                        data: [restOfBalance, totalExpenses, totalRecurringExpenses, savingGoal],
                         backgroundColor: ['green', 'yellow', 'red', 'purple'],
                         borderWidth: 1,
                     }]
