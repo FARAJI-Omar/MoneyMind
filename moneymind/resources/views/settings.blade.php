@@ -82,17 +82,17 @@
 
             <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20px; gap: 20px; margin-bottom: 0px">
                 <button type="button" id="cancel2" Style="background-color: gray; border: 1px solid gray; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">Cancel</button>
-                <button type="submit" style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    Save
+                <button type="submit" style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'; this.setAttribute('title', 'save')" onmouseout="this.style.transform='scale(1)'; this.removeAttribute('title')">
+                    <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
                 </button>
             </div>
         </form>
         {{-- Delete form --}}
-        <form action="{{ route('settings.destroy', ['id' => $recurringExpense->id]) }}" method="POST" style="position: relative; top: -17%; left: 21%">
+        <form action="{{ route('settings.destroy', ['id' => $recurringExpense->id]) }}" method="POST" style="position: relative; top: -17%; left: 18%">
             @csrf
             @method('DELETE')
-            <button type="submit"  style="background-color: red; color: white; font-weight: bold; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                Delete
+            <button type="submit" style="background-color: red; color: white; font-size: 16px; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'; this.setAttribute('title', 'delete')" onmouseout="this.style.transform='scale(1)'; this.removeAttribute('title')">
+                <i class="fa-solid fa-trash"></i>
             </button>
         </form>
         </div>
@@ -127,17 +127,17 @@
 
             <div style="display: flex; font-weight: 600; font-family: 'Poppins', sans-serif; color: white; margin-top: 20px; gap: 20px; margin-bottom: 0px">
                 <button type="button" id="cancel3" Style="background-color: gray; border: 1px solid gray; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">Cancel</button>
-                <button type="submit" style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    Save
+                <button type="submit" style="background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'; this.setAttribute('title', 'save')" onmouseout="this.style.transform='scale(1)'; this.removeAttribute('title')">
+                    <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
                 </button>
             </div>
         </form>
         {{-- Delete form --}}
-        <form action="{{ route('settings.destroyy', ['id' => $wishListItem->id]) }}" method="POST" style="position: relative; top: -21%; left: 25%">
+        <form action="{{ route('settings.destroyy', ['id' => $wishListItem->id]) }}" method="POST" style="position: relative; top: -21%; left: 21%">
             @csrf
             @method('DELETE')
-            <button type="submit"  style="background-color: red; color: white; font-weight: bold; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                Delete
+            <button type="submit" style="background-color: red; color: white; font-size: 16px; border: 1px solid red; box-shadow: 2px 2px black; border-radius: 5px; padding: 2px 7px; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.1)'; this.setAttribute('title', 'delete')" onmouseout="this.style.transform='scale(1)'; this.removeAttribute('title')">
+                <i class="fa-solid fa-trash"></i>
             </button>
         </form>
         </div>

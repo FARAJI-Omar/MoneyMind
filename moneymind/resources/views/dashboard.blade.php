@@ -27,25 +27,27 @@
             <div class="stats" style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 60px; font-family: 'Poppins';">
                 <div style="display: flex; flex-direction: column; gap: 30px">
                     <div>
-                        <h3>🔹Salary:</h3>
+                        <h3>Salary:</h3>
                         <p>{{$infos->salary}} dh</p>
                     </div>
                     <div>
-                        <h3>🔸Expenses:</h3>
-                        <p>{{$totalExpenses}} dh ({{ number_format(($totalExpenses / $balance) * 100, 2) }}%)</p>
+                        <h3>Expenses:</h3>
+                        <p>{{$totalExpenses}} dh</p>
+                        <p>({{ number_format(($totalExpenses / $balance) * 100, 2) }}%)</p>
                     </div>
                     <div>
-                        <h3>🔸Monthly Expenses:</h3>
-                        <p>{{$totalRecurringExpenses}} dh ({{ number_format(($totalRecurringExpenses / $balance) * 100, 2) }}%)</p>
+                        <h3>Monthly Expenses:</h3>
+                        <p>{{$totalRecurringExpenses}} dh</p>
+                        <p>({{ number_format(($totalRecurringExpenses / $balance) * 100, 2) }}%)</p>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 30px">
                     <div>
-                        <h3>🔹Current Balance:</h3>
+                        <h3>Current Balance:</h3>
                         <p>{{$restOfBalance}} dh ({{ number_format(($restOfBalance / $balance) * 100, 2) }}%)</p>
                     </div>
                     <div>
-                        <h3>🔸Saving Goal:</h3>
+                        <h3>Saving Goal:</h3>
                         <p>{{$savingGoal}} dh</p>
                     </div>
                 </div>
@@ -106,7 +108,7 @@
             const expenseData = {!! json_encode($expensesByCategory->values()) !!}; // Expenses
             const recurringExpenseData = {!! json_encode($recurringExpensesByCategory->values()) !!}; // Recurring Expenses
 
-            // 💰 Summary Chart (pie)
+            // Summary Chart (pie)
             const ctx1 = document.getElementById('summaryChart').getContext('2d');
             new Chart(ctx1, {
                 type: 'doughnut',
@@ -115,17 +117,27 @@
                     datasets: [{
                         label: 'Financial Overview',
                         data: [restOfBalance, totalExpenses, totalRecurringExpenses, savingGoal],
-                        backgroundColor: ['green', 'yellow', 'red', 'purple'],
+                        backgroundColor: ['#0080006e', '#ffff006e', '#ff000082', '#8000806e'],
                         borderWidth: 1,
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { position: 'top' } },
+                    plugins: { 
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                boxWidth: 20,
+                                padding: 15,
+                                textAlign: 'center',
+                                usePointStyle: true
+                            }
+                        } 
+                    }
                 }
             });
 
-            // 📊 Expenses by Category (bar)
+            // Expenses by Category (bar)
             const ctx2 = document.getElementById('categoryChart').getContext('2d');
             new Chart(ctx2, {
                 type: 'bar',
