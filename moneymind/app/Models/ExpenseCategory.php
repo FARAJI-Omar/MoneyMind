@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ExpenseCategory extends Model
 {
-    protected $fillable = ['name'];
+    use HasFactory;
 
-    // Relationship with Expense
+    protected $fillable = [
+        'name',
+    ];
+
     public function expenses()
     {
         return $this->hasMany(Expense::class);
     }
-    
+
     public function recurringExpenses()
     {
         return $this->hasMany(RecurringExpense::class);

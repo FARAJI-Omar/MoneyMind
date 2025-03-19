@@ -2,31 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class RecurringExpense extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'user_id',
-        'category_id',
         'name',
         'price',
+        'user_id',
+        'category_id',
         'due_date',
     ];
 
-    protected $casts = [
-        'due_date' => 'date',
-    ];
+    public function category()
+    {
+        return $this->belongsTo(ExpenseCategory::class);
+    }
 
-    // Relationship with User
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Relationship with ExpenseCategory
-    public function category()
-    {
-        return $this->belongsTo(ExpenseCategory::class, 'category_id');
     }
 }

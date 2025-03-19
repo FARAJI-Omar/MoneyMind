@@ -34,11 +34,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/categories', [AdminController::class, 'categoryStore'])->name('categories.store');
         Route::delete('/admin/delete-category/{id}', [AdminController::class, 'categoryDestroy'])->name('categories.destroy');
 
-
-        // delete
     });
 });
-
 
 
 Route::middleware(['auth'])->group(function () {

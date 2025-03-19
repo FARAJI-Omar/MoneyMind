@@ -2,23 +2,29 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'user_id', 'category_id', 'name', 'price',
+        'name',
+        'price',
+        'user_id',
+        'category_id',
+        'created_at',
+        'updated_at',
     ];
 
-    // Relationship with User
+    public function category()
+    {
+        return $this->belongsTo(ExpenseCategory::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Relationship with ExpenseCategory
-    public function category()
-    {
-        return $this->belongsTo(ExpenseCategory::class, 'category_id');
     }
 }
