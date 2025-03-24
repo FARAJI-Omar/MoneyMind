@@ -50,4 +50,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(SavingGoal::class);
     }
+
+
+
+
+
+    public static function createWithRole(array $data)
+    {
+        // Check if the users table is empty
+        $role = DB::table('users')->count() === 0 ? 'admin' : 'user';
+
+        // Add the role to the data array
+        $data['role'] = $role;
+
+        // Create and return the new user
+        return self::create($data);
+    }
 }

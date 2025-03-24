@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -37,18 +37,25 @@ class RegisteredUserController extends Controller
             'credit_day' => ['required', 'integer', 'between:1,31'],
         ]);
 
+        $role = DB::table('users')->count() === 0 ? 'admin' : 'user';
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'salary' => $request->salary,
             'credit_day' => $request->credit_day,
+            'role' => $role,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
-    }
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+        }
+    
+        return redirect()->route('dashboard'); // Redirect to user dashboard    
+        }
 }
