@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained('expense_categories');
-            $table->date('due_date');
+            $table->integer('due_date');
             $table->timestamps();
         });
     }
