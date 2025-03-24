@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function manageCategories()
     {
         $categories = ExpenseCategory::paginate(9);
-        return view('admin.ManageCategories', compact('categories'));
+        return view('admin.manageCategories', compact('categories'));
     }
 
     public function categoryStore(Request $request)
@@ -56,7 +56,7 @@ class AdminController extends Controller
             return $user;
         });
     
-        return view('admin.ManageUsers', compact('users'));
+        return view('admin.manageUsers', compact('users'));
     }
     
 
