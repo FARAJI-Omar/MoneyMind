@@ -33,18 +33,18 @@
                     <div>
                         <h3>Expenses:</h3>
                         <p>{{$totalExpenses}} dh</p>
-                        <p>{{ number_format(($totalExpenses / $balance) * 100, 2) : 'N/A' }}%</p>
+                        <p>{{ ($balance != 0) ? number_format(($totalExpenses / $balance) * 100, 2) : 'N/A' }}%</p>
                     </div>
                     <div>
                         <h3>Monthly Expenses:</h3>
                         <p>{{$totalRecurringExpenses}} dh</p>
-                        <p>{{ number_format(($totalRecurringExpenses / $balance) * 100, 2) : 'N/A' }}%</p>
+                        <p>{{ ($balance != 0) ? number_format(($totalRecurringExpenses / $balance) * 100, 2) : 'N/A' }}%</p>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 30px">
                     <div>
                         <h3>Current Balance:</h3>
-                        <p>{{$restOfBalance}} dh {{ number_format(($restOfBalance / $balance) * 100, 2) : 'N/A' }}%</p>
+                        <p>{{ ($balance != 0) ? $restOfBalance . ' dh ' . number_format(($restOfBalance / $balance) * 100, 2) . '%' : 'N/A' }}</p>
                     </div>
                     <div>
                         <h3>Saving Goal:</h3>
