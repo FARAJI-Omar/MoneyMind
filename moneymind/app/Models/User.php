@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -14,6 +15,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'profile_image',
         'password',
         'balance',
         'salary',
@@ -54,6 +56,20 @@ class User extends Authenticatable
 
 
 
+
+    /**
+     * Get the profile image URL
+     *
+     * @return string
+     */
+    public function getProfileImageUrl()
+    {
+        if ($this->profile_image) {
+            return asset($this->profile_image);
+        }
+
+        return asset('images/default-profile.png');
+    }
 
     public static function createWithRole(array $data)
     {

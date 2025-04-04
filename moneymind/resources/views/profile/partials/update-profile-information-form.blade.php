@@ -13,18 +13,18 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Name')" style="color: gray"/>
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Email')" style="color: gray"/>
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -47,6 +47,16 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="profile_image" :value="__('Profile Image')" style="color: gray"/>
+            <div class="mt-2">
+                <img src="{{ $user->getProfileImageUrl() }}" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; margin-bottom: 10px;">
+                <input id="profile_image" name="profile_image" type="file" class="mt-1 block w-full" accept="image/*">
+                <p class="text-sm text-gray-500 mt-1">Upload a profile picture (JPEG, PNG, JPG, GIF up to 2MB)</p>
+            </div>
+            <x-input-error class="mt-2" :messages="$errors->get('profile_image')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <button style="font-weight: 600; font-family: 'Poppins', sans-serif; color: white; background-color: #9688d9; border: 1px solid #9688d9; box-shadow: 5px 5px black; padding: 5px 20px; border-radius: 5px; transition: transform 0.15s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">{{ __('Save') }}</button>
 
@@ -62,3 +72,5 @@
         </div>
     </form>
 </section>
+
+
