@@ -30,7 +30,8 @@ class DashboardController extends Controller
             $recurringExpensesByCategory = RecurringExpense::where('user_id', auth()->id())
                 ->selectRaw('category_id, SUM(price) as total')
                 ->groupBy('category_id')
-                ->pluck('total', 'category_id');
+                ->pluck('total', 'category_id')
+                ->toArray(); // Convert to array to ensure it can be encoded to JSON
 
             $totalExpenses = Expense::where('user_id', auth()->id())->sum('price');
             $totalRecurringExpenses = RecurringExpense::where('user_id', auth()->id())->sum('price');
@@ -74,7 +75,8 @@ class DashboardController extends Controller
                 'totalAllExpenses',
                 'restOfBalance',
                 'categoryNames',
-                'categoryExpenses'
+                'categoryExpenses',
+                'recurringExpensesByCategory'
             ));
         }
         return redirect()->route('homepage');

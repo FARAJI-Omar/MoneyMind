@@ -186,8 +186,8 @@
 
             // Category Data
             const categoryLabels = {!! json_encode($categoryNames->values()) !!}; // Category Names
-            const expenseData = {!! json_encode($expensesByCategory->values()) !!}; // Expenses
-            const recurringExpenseData = {!! json_encode($recurringExpensesByCategory->values()) !!}; // Recurring Expenses
+            const expenseData = {!! json_encode($categoryExpenses->values()) !!}; // Expenses
+            const recurringExpenseData = {!! json_encode(array_values($recurringExpensesByCategory)) !!}; // Recurring Expenses
 
             // Summary Chart (pie)
             const ctx1 = document.getElementById('summaryChart').getContext('2d');
@@ -234,8 +234,7 @@
                 },
                 options: {
                     responsive: true,
-                    plugins: {legend: {display: false,}
-        }
+                    plugins: {legend: {display: false}}
                 }
             });
         });
@@ -280,6 +279,8 @@
         }
     }
     </style>
+
+
 
 
 

@@ -106,7 +106,7 @@
         <div style="background-color: white; width: 250px; height: 150px; border-radius: 10px; padding: 5px 0 0 15px; display: flex; flex-direction: column; align-items: start; gap: 8px">
             <h3 style="font-family: 'Poppins', sans sarif; font-weight: 600; font-size: 16px">{{$recurringExpense->name}}</h3>
             <h4 style="font-family: 'Poppins', sans sarif; font-size: 15px">{{$recurringExpense->price}} dh</h4>
-            <h5 style="font-family: 'Poppins', sans sarif; font-size: 13px; background-color: #eceaea; padding: 0px 10px; border-radius: 5px">Entertainement</h5>
+            <h5 style="font-family: 'Poppins', sans sarif; font-size: 13px; background-color: #eceaea; padding: 0px 10px; border-radius: 5px">{{$recurringExpense->category->name}}</h5>
             <p style="font-family: 'Poppins', sans sarif; font-size: 13px">due at: {{ $recurringExpense->due_date}} {{ \Carbon\Carbon::now()->format('F') }}</p>
         </div>
         @endforeach
