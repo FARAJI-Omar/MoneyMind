@@ -15,7 +15,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'profile_image',
         'password',
         'balance',
         'salary',
@@ -57,22 +56,7 @@ class User extends Authenticatable
 
 
 
-    /**
-     * Get the profile image as a data URL
-     *
-     * @return string
-     */
-    public function getProfileImageUrl()
-    {
-        if ($this->profile_image) {
-            // Convert binary data to base64 encoded data URL
-            $base64 = base64_encode($this->profile_image);
-            $mime = 'image/jpeg'; // Default mime type
-            return 'data:' . $mime . ';base64,' . $base64;
-        }
 
-        return asset('images/default-profile.png');
-    }
 
     public static function createWithRole(array $data)
     {

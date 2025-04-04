@@ -118,7 +118,7 @@
                 <div style="position: relative; z-index: 1;">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px;">
-                            <img src="{{ empty($infos->profile_image) ? asset('images/default-profile.png') : $infos->profile_image }}" alt="Profile Image" style="width: 100px; height: 50px; object-fit: cover; border-radius: 50%; border: solid white 0.2px">
+                            <i class="fas fa-user" style="color: white; font-size: 20px;"></i>
                         </div>
                         <div>
                             <h3 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; margin: 0;">{{ $infos->name }}</h3>

@@ -38,19 +38,6 @@ class ProfileController extends Controller
         $user = $request->user();
         $data = $request->validated();
 
-        // Handle profile image upload
-        if ($request->hasFile('profile_image')) {
-            // Create profileImages directory if it doesn't exist
-            if (!file_exists(public_path('profileImages'))) {
-                mkdir(public_path('profileImages'), 0777, true);
-            }
-
-            // Upload the image
-            $imageName = time() . '.' . $request->profile_image->extension();
-            $request->profile_image->move(public_path('profileImages'), $imageName);
-            $data['profile_image'] = 'profileImages/' . $imageName;
-        }
-
         $user->fill($data);
 
         if ($user->isDirty('email')) {
@@ -83,4 +70,3 @@ class ProfileController extends Controller
         return Redirect::to('homepage');
     }
 }
-
