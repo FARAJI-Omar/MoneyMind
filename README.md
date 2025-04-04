@@ -1,113 +1,110 @@
-💰📊📈
-# MoneyMind - Gestion Budgétaire Personnelle
+# MoneyMind - Personal Budget Management
 
-MoneyMind est une application web Laravel permettant aux utilisateurs de gérer efficacement leurs finances personnelles. L'application offre le suivi des revenus, des dépenses, des objectifs d'épargne et des listes de souhaits tout en proposant des suggestions intelligentes grâce à l'IA. 💡💵📉
+MoneyMind is a Laravel-based web application designed to help users effectively manage their personal finances. The application offers income tracking, expense management, savings goals, and AI-powered financial suggestions.
 
-## Fonctionnalités Principales 🚀📌🛠️
+## Key Features
 
-### **Front Office**
+### User Features
+- **Dashboard Overview**
+  - Real-time balance tracking
+  - Expense categorization and visualization
+  - Monthly spending analysis
+  - AI-powered financial advice
 
-#### **Visiteur**
+- **Expense Management**
+  - Track one-time and recurring expenses
+  - Categorize expenses
+  - Set budget alerts
+  - Monitor spending patterns
 
-- Accès à une page d'accueil publique présentant l'application.
-- Inscription avec saisie du salaire mensuel et de la date de crédit.
-- Système de récupération de mot de passe. 🔐📩💼
+- **Financial Planning**
+  - Set and track savings goals
+  - Automated monthly salary credit
+  - Budget alerts and notifications
+  - AI-powered spending recommendations
 
-#### **Utilisateur Authentifié**
+### Admin Features
+- User management
+- Expense category management
+- System statistics and analytics
+- Account maintenance
 
-- Gestion du salaire mensuel avec crédit automatique.
-- Ajout et gestion des dépenses (avec catégories définies par l'admin).
-- Configuration et suivi des dépenses récurrentes.
-- Paramétrage des alertes budgétaires. ⚠️💲📊
-- Tableau de bord interactif :
-  - Revenu restant et total dépensé.
-  - Répartition des dépenses par catégorie.
-  - Progression des objectifs d'épargne et état des souhaits.
-  - Suggestions IA basées sur les habitudes de dépense.
-- Notifications par email (alertes budget, salaire crédité). 📧📆🔔
+## Technical Stack
 
-### **Back Office (Administrateur)**
+- **Backend:** PHP 8+, Laravel 12
+- **Database:** MySQL
+- **Frontend:** Blade templates, TailwindCSS
+- **AI Integration:** Google Gemini API
+- **Authentication:** Laravel Breeze
 
-- Tableau de bord des statistiques (nombre d'utilisateurs, revenu moyen, tendances des dépenses).
-- Suppression des comptes inactifs.
-- Gestion des catégories de dépenses.
-- Gestion des utilisateurs. 🔍📑🔧
+## Installation
 
-## Fonctionnalités Transversales 🔄📡🛡️
-
-- Authentification et autorisation (utilisateur/admin).
-- Notifications par email pour les alertes et mises à jour.
-- Gestion automatisée des salaires et dépenses récurrentes.
-- Suggestions IA via Gemini pour optimiser le budget.
-- Statistiques et filtrage des dépenses.
-
-## Exigences Techniques 🖥️⚙️🔬
-
-- **Architecture :** Application monolithique scalable sous Laravel.
-- **Automatisation :** Planification des salaires et dépenses récurrentes.
-- **IA :** Intégration de l'API Gemini pour recommandations personnalisées.
-- **Hébergement :** Serveur Linux.
-- **Interface Utilisateur :**
-  - Design responsive et adapté à tous les appareils.
-  - Navigation intuitive et tableau de bord clair.
-  - Visualisation des données via graphiques.
-- **Sécurité :**
-  - Validation des entrées côté serveur.
-  - Protection contre les attaques XSS et CSRF.
-  - Hachage des mots de passe.
-  - Accès réglementé par rôles.
-  - Requêtes SQL sécurisées. 🔒🛡️💾
-
-## Installation & Déploiement 🚀💻🔧
-
-### **Prérequis**
-
-- PHP 8+
-- Laravel 12
-- MySQL
-- Composer
-- Node.js & NPM
-
-### **Installation**
-
+1. **Clone the repository**
 ```bash
-# Cloner le projet
-git clone https://github.com/votre-repo/MoneyMind.git
+git clone https://github.com/your-username/MoneyMind.git
 cd MoneyMind
+```
 
-# Installer les dépendances
+2. **Install dependencies**
+```bash
 composer install
-npm install && npm run dev
+npm install
+```
 
-# Configurer l'environnement
+3. **Environment setup**
+```bash
 cp .env.example .env
 php artisan key:generate
+```
 
-# Configurer la base de données
+4. **Configure database**
+- Update `.env` with your database credentials
+```bash
 php artisan migrate --seed
+```
 
-# Lancer le serveur local
+5. **Start development server**
+```bash
+npm run dev
 php artisan serve
 ```
 
-## Exemple d'Utilisation 📖🔍📝
+## Usage Example
 
-1. **Inscription** : Un utilisateur déclare un salaire de 5000 DH, crédité le 29 de chaque mois.
-2. **Admin** : Ajoute les catégories "Divertissement", "Nourriture", "Factures".
-3. **Dépenses Récurrentes** : "Abonnement Internet - 200 DH, Factures, chaque 10".
-4. **Dépenses Manuelles** : "Jeu - 600 DH, Divertissement" (reste 4200 DH).
-5. **Alerte** : Seuil fixé à 50% (2500 DH), dépense "TV - 2000 DH", alerte budget dépassé ! 🚨💸⚠️
-6. **IA** : Gemini suggère de réduire les dépenses en loisirs.
-7. **Objectifs** : "Épargner 300 DH" non atteint. Liste de souhaits : "Casque - 1000 DH" (10% atteint).
-8. **Admin** : Supprime un compte inactif depuis 2 mois.
-9. **Déploiement** : Application accessible via `https://moneymind.example.com`. 🌐📲🔗
+1. **User Registration**
+   - Register with monthly salary and credit date
+   - Set up initial budget preferences
 
----
+2. **Expense Tracking**
+   - Add regular expenses
+   - Set up recurring payments
+   - Monitor spending by category
 
-### Auteur ✍️👨‍💻🚀
+3. **Budget Management**
+   - Set budget limits
+   - Receive overspending alerts
+   - Track savings progress
 
-Projet développé par Omar FARAJI.
+## Security
 
-### Licence 📜⚖️✅
+- CSRF protection
+- SQL injection prevention
+- Password hashing
+- Role-based access control
+- Input validation
 
-MIT License
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Author
+
+Omar FARAJI
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
