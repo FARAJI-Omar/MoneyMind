@@ -1,0 +1,311 @@
+/* MoneyMind Login Page Styles */
+
+/* Canvas for particles */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Main container */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #180e5b 0%, #1a237e 50%, #0d47a1 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Logo container */
+.logo-container {
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+}
+
+/* Card styling */
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Form group */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* Input label animation */
+.input-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-label.active {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 0.75rem;
+    color: #00bbf0;
+    background: rgba(24, 14, 91, 0.8);
+    padding: 0 0.5rem;
+    border-radius: 4px;
+}
+
+/* Input styling - only apply to custom inputs, not Laravel components */
+.animated-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.animated-input:focus {
+    outline: none;
+    border-color: #00bbf0;
+    box-shadow: 0 0 0 3px rgba(0, 187, 240, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Override for Laravel text inputs */
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #00bbf0 !important;
+    box-shadow: 0 0 0 2px rgba(0, 187, 240, 0.3) !important;
+}
+
+/* Checkbox styling */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.custom-checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.custom-checkbox:checked {
+    background: #00bbf0;
+    border-color: #00bbf0;
+}
+
+.checkbox-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Button styling */
+.login-button {
+    width: auto;
+    padding: 0.75rem 2rem;
+    background: #00bbf0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button.w-full {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.login-button:hover {
+    background: #0099cc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 187, 240, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+/* Button ripple effect */
+.login-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.login-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+/* Link styling */
+.login-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.login-link:hover {
+    color: #00bbf0;
+}
+
+.login-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00bbf0;
+    transition: width 0.3s ease;
+}
+
+.login-link:hover::after {
+    width: 100%;
+}
+
+/* Session status */
+.session-status {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: rgba(0, 187, 240, 0.2);
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Error messages */
+.error-message {
+    color: #ff5252;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .login-card {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .login-card {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+

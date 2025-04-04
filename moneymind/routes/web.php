@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('homepage');
 })->name('homepage');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => function ($request, $next) {
@@ -75,3 +78,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+

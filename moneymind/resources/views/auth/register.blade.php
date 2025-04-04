@@ -41,19 +41,21 @@
             <x-input-label for="credit_day" :value="__('Credit Day')" />
             <div style="display: flex; align-items: center; gap: 5px">
                 <x-text-input id="credit_day" class="block mt-1" style="width:50%" type="number" name="credit_day" :value="old('credit_day')" required min="1" max="31" />
-                <p style="color: gray">of each month</p>
+                <p style="color: white">of each month</p>
             </div>
             <x-input-error :messages="$errors->get('credit_day')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4 gap-4">
-         <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="login-link" href="{{ route('login') }}">
                 {{ __('Already registered? Log in') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <button type="submit" class="login-button">
                 {{ __('Register') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
 </x-guest-layout>
+
+

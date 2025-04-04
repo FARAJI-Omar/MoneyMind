@@ -9,7 +9,6 @@
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/moneymindicon.png') }}" type="image/png">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
@@ -35,4 +34,5 @@
             </div>
         </header>
         @endisset
+
 

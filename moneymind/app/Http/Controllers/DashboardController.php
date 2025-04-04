@@ -18,7 +18,6 @@ class DashboardController extends Controller
         if (auth()->check()) {
             $infos = auth()->user();
             $expenses = Expense::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
-            $balance = $infos->balance;
             $savingGoal = SavingGoal::where('user_id', auth()->id())->value('monthly_deduction') ?? 0;
 
             // Fetch expenses grouped by category
@@ -36,12 +35,15 @@ class DashboardController extends Controller
             $totalExpenses = Expense::where('user_id', auth()->id())->sum('price');
             $totalRecurringExpenses = RecurringExpense::where('user_id', auth()->id())->sum('price');
             $totalAllExpenses = $totalExpenses + $totalRecurringExpenses + $savingGoal;
+            $balance = ($infos->salary) - $totalAllExpenses;
+
             $restOfBalance = $balance - $totalAllExpenses;
 
             // Fetch category names
             $categoryNames = ExpenseCategory::pluck('name', 'id');
 
-            $financialAdvice = $aiService->getFinancialAdvice($balance, $totalAllExpenses);
+            $salary = $infos->salary;
+            $financialAdvice = $aiService->getFinancialAdvice($salary, $totalAllExpenses);
 
             return view('dashboard', compact('financialAdvice',
                 'infos', 'expenses', 'balance', 'savingGoal', 'totalExpenses', 'totalRecurringExpenses',

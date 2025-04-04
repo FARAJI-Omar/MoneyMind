@@ -19,7 +19,7 @@
         <i class="fas fa-plus"></i> Add Expense
     </button>
     <button id="toggleFormBtn2" class="btn btn-primary" style="background-color: lightgray; border: 2px solid gray; box-shadow: 5px 5px black; border-radius: 5px; padding: 5px 10px; font-weight: 600; font-family: 'Poppins', sans-serif; transition: transform 0.15s ease-in-out" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-        <i class="fas fa-plus"></i> Add Recurring Expense
+        <i class="fas fa-plus"></i> Add Monthly Expense
     </button>
 
 </div>
