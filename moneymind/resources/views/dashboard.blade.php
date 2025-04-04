@@ -118,7 +118,7 @@
                 <div style="position: relative; z-index: 1;">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px;">
-                            <i class="fas fa-user" style="color: white; font-size: 20px;"></i>
+                            <i class="fa-solid fa-user" style="font-size: 30px"></i>
                         </div>
                         <div>
                             <h3 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; margin: 0;">{{ $infos->name }}</h3>
@@ -185,9 +185,8 @@
             const restOfBalance = {!! json_encode($restOfBalance) !!};
 
             // Category Data
-            const categoryLabels = {!! json_encode($categoryNames->values()) !!}; // Category Names
-            const expenseData = {!! json_encode($expensesByCategory->values()) !!}; // Expenses
-            const recurringExpenseData = {!! json_encode($recurringExpensesByCategory->values()) !!}; // Recurring Expenses
+            const categoryLabels = {!! json_encode($categoryNames) !!}; // Category Names
+            const expenseData = {!! json_encode($categoryExpenses) !!}; // Expenses
 
             // Summary Chart (pie)
             const ctx1 = document.getElementById('summaryChart').getContext('2d');
@@ -220,6 +219,30 @@
 
             // Expenses by Category (bar)
             const ctx2 = document.getElementById('categoryChart').getContext('2d');
+
+            // Generate dynamic colors based on number of categories
+            function generateColors(numColors) {
+                const colors = [
+                    '#ef4444', // Red
+                    '#00bbf0', // Blue
+                    '#10b981', // Green
+                    '#7c3aed', // Purple
+                    '#f59e0b', // Orange
+                    '#ec4899', // Pink
+                    '#14b8a6', // Teal
+                    '#8b5cf6', // Indigo
+                    '#f97316', // Amber
+                    '#06b6d4'  // Cyan
+                ];
+
+                // If we have more categories than colors, repeat colors
+                const result = [];
+                for (let i = 0; i < numColors; i++) {
+                    result.push(colors[i % colors.length]);
+                }
+                return result;
+            }
+
             new Chart(ctx2, {
                 type: 'bar',
                 data: {
@@ -227,15 +250,33 @@
                     datasets: [{
                         label: 'Expenses by Category',
                         data: expenseData,
-                        backgroundColor: ['#ef4444', '#00bbf0', '#10b981', '#7c3aed', '#f59e0b'],
+                        backgroundColor: generateColors(categoryLabels.length),
                         borderWidth: 1,
                         barThickness: 70
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: {legend: {display: false,}
-        }
+                    plugins: {
+                        legend: {display: false},
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' dh';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + ' dh';
+                                }
+                            }
+                        }
+                    }
                 }
             });
         });
@@ -280,6 +321,7 @@
         }
     }
     </style>
+
 
 
 

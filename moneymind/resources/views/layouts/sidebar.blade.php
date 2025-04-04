@@ -3,32 +3,32 @@
     <!-- Sidebar (20% width) -->
     <div style="width: 15%; color: #4e4e4e; padding-top: 20px;  border-right: 0.5px gray solid">
         <ul style="list-style: none; padding: 50px 5px; margin: 0;">
-            <li id="dashboard" style="padding: 20px; {{ request()->routeIs('dashboard') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li id="dashboard" style="padding: 20px; {{ request()->routeIs('dashboard') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('dashboard') }}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-tachometer-alt" style="margin-right: 10px; color: #2c2b2b"></i> Dashboard
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('savingGoal') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('savingGoal') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="savingGoal" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-piggy-bank" style="margin-right: 10px; color: #2c2b2b"></i> Saving Goal
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('expenses') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('expenses') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('expenses')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-wallet" style="margin-right: 10px; color: #2c2b2b"></i> Expenses
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('wishlist') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('wishlist') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('wishlist')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-clipboard-list" style="margin-right: 10px; color: #2c2b2b"></i> Wish List
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('settings') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('settings') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('settings')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-gears" style="margin-right: 10px; color: #2c2b2b"></i> Settings
                 </a>
             </li>
-            <li style="padding: 20px; {{ request()->routeIs('profile.edit') ? 'background-color: black; color: white; border-radius: 0 10px 10px 0' : '' }}">
+            <li style="padding: 20px; {{ request()->routeIs('profile.edit') ? 'background-color: #1a227c; color: white; border-radius: 0 10px 10px 0' : '' }}">
                 <a href="{{ route('profile.edit')}}" style="text-decoration: none; display: flex; align-items: center;">
                     <i class="fa-solid fa-user" style="margin-right: 10px; color: #2c2b2b"></i> Profile
                 </a>

@@ -39,15 +39,42 @@ class DashboardController extends Controller
 
             $restOfBalance = $balance - $totalAllExpenses;
 
-            // Fetch category names
-            $categoryNames = ExpenseCategory::pluck('name', 'id');
+            // Fetch all categories
+            $categories = ExpenseCategory::all();
+            $categoryNames = collect([]);
+            $categoryExpenses = collect([]);
+
+            // Process each category
+            foreach ($categories as $category) {
+                // Only include categories that have expenses
+                $categoryTotal = ($expensesByCategory[$category->id] ?? 0) + ($recurringExpensesByCategory[$category->id] ?? 0);
+                if ($categoryTotal > 0) {
+                    $categoryNames->push($category->name);
+                    $categoryExpenses->push($categoryTotal);
+                }
+            }
+
+            // If no categories have expenses, add a placeholder
+            if ($categoryNames->isEmpty()) {
+                $categoryNames->push('No Expenses');
+                $categoryExpenses->push(0);
+            }
 
             $salary = $infos->salary;
             $financialAdvice = $aiService->getFinancialAdvice($salary, $totalAllExpenses);
 
-            return view('dashboard', compact('financialAdvice',
-                'infos', 'expenses', 'balance', 'savingGoal', 'totalExpenses', 'totalRecurringExpenses',
-                'totalAllExpenses', 'restOfBalance', 'expensesByCategory', 'recurringExpensesByCategory', 'categoryNames'
+            return view('dashboard', compact(
+                'financialAdvice',
+                'infos',
+                'expenses',
+                'balance',
+                'savingGoal',
+                'totalExpenses',
+                'totalRecurringExpenses',
+                'totalAllExpenses',
+                'restOfBalance',
+                'categoryNames',
+                'categoryExpenses'
             ));
         }
         return redirect()->route('homepage');
