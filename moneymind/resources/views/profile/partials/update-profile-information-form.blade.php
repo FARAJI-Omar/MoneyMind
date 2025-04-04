@@ -50,7 +50,7 @@
         <div>
             <x-input-label for="profile_image" :value="__('Profile Image')" style="color: gray"/>
             <div class="mt-2">
-                <img src="{{ $user->getProfileImageUrl() }}" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; margin-bottom: 10px;">
+                <img src="{{ empty($infos->profile_image) ? asset('images/default-profile.png') : $infos->profile_image }}" alt="Profile Image" style="width: 100px; height: 50px; object-fit: cover; border-radius: 50%; border: solid white 0.2px">
                 <input id="profile_image" name="profile_image" type="file" class="mt-1 block w-full" accept="image/*">
                 <p class="text-sm text-gray-500 mt-1">Upload a profile picture (JPEG, PNG, JPG, GIF up to 2MB)</p>
             </div>

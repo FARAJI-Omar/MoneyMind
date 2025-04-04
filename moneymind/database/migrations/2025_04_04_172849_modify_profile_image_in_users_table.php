@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Change profile_image from string to binary data
-            $table->dropColumn('profile_image');
-            $table->binary('profile_image')->nullable()->after('email');
+            //
         });
     }
 
@@ -24,9 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Revert back to string
-            $table->dropColumn('profile_image');
-            $table->string('profile_image')->nullable()->after('email');
+            //
         });
     }
 };
+
