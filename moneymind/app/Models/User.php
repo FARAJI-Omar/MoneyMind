@@ -58,14 +58,17 @@ class User extends Authenticatable
 
 
     /**
-     * Get the profile image URL
+     * Get the profile image as a data URL
      *
      * @return string
      */
     public function getProfileImageUrl()
     {
         if ($this->profile_image) {
-            return asset($this->profile_image);
+            // Convert binary data to base64 encoded data URL
+            $base64 = base64_encode($this->profile_image);
+            $mime = 'image/jpeg'; // Default mime type
+            return 'data:' . $mime . ';base64,' . $base64;
         }
 
         return asset('images/default-profile.png');

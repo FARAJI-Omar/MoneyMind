@@ -40,15 +40,8 @@ class ProfileController extends Controller
 
         // Handle profile image upload
         if ($request->hasFile('profile_image')) {
-            // Create profileImages directory if it doesn't exist
-            if (!file_exists(public_path('profileImages'))) {
-                mkdir(public_path('profileImages'), 0777, true);
-            }
-
-            // Upload the image
-            $imageName = time() . '.' . $request->profile_image->extension();
-            $request->profile_image->move(public_path('profileImages'), $imageName);
-            $data['profile_image'] = 'profileImages/' . $imageName;
+            // Read the image file contents as binary data
+            $data['profile_image'] = file_get_contents($request->profile_image->path());
         }
 
         $user->fill($data);
