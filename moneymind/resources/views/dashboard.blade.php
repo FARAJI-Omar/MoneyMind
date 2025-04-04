@@ -185,8 +185,9 @@
             const restOfBalance = {!! json_encode($restOfBalance) !!};
 
             // Category Data
-            const categoryLabels = {!! json_encode($categoryNames) !!}; // Category Names
-            const expenseData = {!! json_encode($categoryExpenses) !!}; // Expenses
+            const categoryLabels = {!! json_encode($categoryNames->values()) !!}; // Category Names
+            const expenseData = {!! json_encode($expensesByCategory->values()) !!}; // Expenses
+            const recurringExpenseData = {!! json_encode($recurringExpensesByCategory->values()) !!}; // Recurring Expenses
 
             // Summary Chart (pie)
             const ctx1 = document.getElementById('summaryChart').getContext('2d');
@@ -219,30 +220,6 @@
 
             // Expenses by Category (bar)
             const ctx2 = document.getElementById('categoryChart').getContext('2d');
-
-            // Generate dynamic colors based on number of categories
-            function generateColors(numColors) {
-                const colors = [
-                    '#ef4444', // Red
-                    '#00bbf0', // Blue
-                    '#10b981', // Green
-                    '#7c3aed', // Purple
-                    '#f59e0b', // Orange
-                    '#ec4899', // Pink
-                    '#14b8a6', // Teal
-                    '#8b5cf6', // Indigo
-                    '#f97316', // Amber
-                    '#06b6d4'  // Cyan
-                ];
-
-                // If we have more categories than colors, repeat colors
-                const result = [];
-                for (let i = 0; i < numColors; i++) {
-                    result.push(colors[i % colors.length]);
-                }
-                return result;
-            }
-
             new Chart(ctx2, {
                 type: 'bar',
                 data: {
@@ -250,33 +227,15 @@
                     datasets: [{
                         label: 'Expenses by Category',
                         data: expenseData,
-                        backgroundColor: generateColors(categoryLabels.length),
+                        backgroundColor: ['#ef4444', '#00bbf0', '#10b981', '#7c3aed', '#f59e0b'],
                         borderWidth: 1,
                         barThickness: 70
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: {
-                        legend: {display: false},
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.parsed.y + ' dh';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + ' dh';
-                                }
-                            }
-                        }
-                    }
+                    plugins: {legend: {display: false,}
+        }
                 }
             });
         });
@@ -321,6 +280,8 @@
         }
     }
     </style>
+
+
 
 
 
